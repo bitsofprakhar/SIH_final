@@ -1,0 +1,842 @@
+[
+  {
+    "timestamp": "2025-09-10T01:06:20.310919",
+    "attempt_id": "df8888ab-b96e-4f1f-b800-5807156a1f6d",
+    "ip_address": "127.0.0.1",
+    "filename": "marksheet.jpg",
+    "extracted_data": {
+      "ms_no": null,
+      "name": null,
+      "college": "/ \u20222 School SCIENCE COLLEGE Rolt Code 21020 Rolf ND 12411 Registration No. 2t020-RS-2423-23 at the Annual Intermediate of SC'ENCE\tExamination. 2025 held in the month FEBRUARY Full Pass MARKS OBTAINED SUBJECT",
+      "total_marks": null,
+      "roll_code": null,
+      "roll_no": null,
+      "registration_no": "2t020"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "65f1e6df-f6a9-401c-97c7-64b4ebe3ed2c"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:13:10.840352",
+    "attempt_id": "0d912d46-726c-49dc-b58e-63210ad5e279",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "e4011d3f-107e-4581-9378-2f95481abfa9"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:15:24.465838",
+    "attempt_id": "6800073a-d27c-4dac-a7cf-59e44ae2f606",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "639aefb7-9c12-454c-a51c-6fe65a001bd6"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:08.940214",
+    "attempt_id": "e3c874d2-b8b0-4be0-b172-5930899ef572",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "82caa8b0-bb5c-4b18-ae9c-4397e9702a03"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:17.592248",
+    "attempt_id": "92744123-dc5f-43b1-b568-d35024dbcd54",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "54d96845-23e2-4f71-9bb1-16f2e5d2fd50"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:19.220235",
+    "attempt_id": "676db8f8-bccc-4ae6-91a5-e58de272df5f",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "f46e4c29-bc89-494d-b825-b9b365237710"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:19.245509",
+    "attempt_id": "011601ba-45f0-429b-893b-7a2abc942ef7",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "5699ca3e-2cff-49ce-a0ce-478a7efe8e78"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:19.584908",
+    "attempt_id": "8e31e3b3-8889-4022-bd28-593fa5a9494b",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "55e7ffb6-de64-4240-9703-9769d39d8ee0"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:19.936463",
+    "attempt_id": "1c14f7ac-e2f3-4e71-a505-29f1464a8402",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "0bc29160-a80c-4a92-bf08-8a207d537572"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:20.316713",
+    "attempt_id": "039ec57c-0412-4465-af8f-b15d99d793dc",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "1460944a-a23c-47e1-997a-914667260a00"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:16:20.411088",
+    "attempt_id": "73c3588b-142e-4770-8dbe-0904a9474e22",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "9d541792-4e1b-4eef-a9ed-7c3bc1e3e2cf"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:47:09.672489",
+    "attempt_id": "9f8ab20b-4fb1-4ef0-bb4c-c6cbef2bfa67",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "a9266540-8d65-45c3-81a1-6ddbb692238a"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:47:35.519996",
+    "attempt_id": "30b428c3-bb16-494f-88f5-cddeaf6eed75",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "4ae4310c-ef53-4002-a24b-640fed20eb2b"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:50:34.072928",
+    "attempt_id": "c67ac49e-9a95-40bf-ad02-8b8fdb332553",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "d8fa7515-0d5e-4dbd-9c09-7dd302f73a21"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T01:53:15.865142",
+    "attempt_id": "100b4d91-054b-431e-8d8b-6e1b104d28d0",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "3ae9b449-05af-4d18-9a57-dd5ad808ca50"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:01:30.829544",
+    "attempt_id": "befde270-c102-41de-a317-210b3ad9e70f",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "144ad774-6fff-4a1e-8260-cd56c789c4ee"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:25:04.079449",
+    "attempt_id": "aae50125-6c9b-4335-bb35-f04f1578a2f7",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "e7b22d09-d811-4ddf-a855-e8ded8b1341d"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:35:41.338001",
+    "attempt_id": "23116759-0287-4dc1-b1c5-db27ff28e66e",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "3aec9b64-7ed0-4b0b-83c4-021ab444ffb0"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:37:55.494441",
+    "attempt_id": "445b0512-a3e2-446d-899b-a1c9b71126fc",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "2da87517-194d-40be-b137-5648c9ba19b4"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:42:50.545723",
+    "attempt_id": "b2cb8b87-8680-4901-93ad-0c6d3e0cd65a",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "500642b0-9352-41bb-a4fa-c2b53025dc94"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:44:52.341988",
+    "attempt_id": "99653c1f-1901-4831-b394-9f0b07e03686",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "d855a2b7-c421-46e4-9f1d-df40e325b68e"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T02:45:08.595554",
+    "attempt_id": "b77dd9c2-bcff-47b6-966f-afa0bacfdcfb",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "0b461339-9f41-4e79-a73d-87f16ca9f071"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T03:08:23.232826",
+    "attempt_id": "7722d3bd-8907-4bec-be58-b2861328baba",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "caa639b9-8acc-4403-a6a7-80207b230eb5"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T03:24:50.710105",
+    "attempt_id": "3471bd8d-c7ce-4606-b13e-13f4c7e2a930",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "1562beca-eec6-4915-a031-c9c3312ba5a3"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T03:28:50.477285",
+    "attempt_id": "abb6d850-5f43-4fce-bd5f-f3e1966a93ec",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "a300a1f1-7c57-4a7c-9915-f05bcfd8039e"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T03:36:28.018959",
+    "attempt_id": "bd2740bd-4c77-4e93-bca8-15011f637813",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": false,
+      "confidence": 0.0,
+      "flag_id": "00c042ad-a29f-4f81-80a5-a5e6b191b1e8"
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T03:39:24.743680",
+    "attempt_id": "c48b139a-7ac1-4f7a-8cd5-5fe7f8cdae4d",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T03:41:41.177755",
+    "attempt_id": "380db6b1-7a59-4391-947d-c533d8fb7452",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T09:32:08.667336",
+    "attempt_id": "e4673d6c-ff25-4aaa-a90b-aaefb417e0cc",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T09:32:26.586667",
+    "attempt_id": "6ffdd800-1772-4dee-981c-f14d89ed3480",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T09:38:14.518825",
+    "attempt_id": "9681a162-749c-4973-b26f-c538e3cc9dc3",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T09:53:07.068463",
+    "attempt_id": "0025a5ba-2f4f-4147-acbd-1706a2bdb0a5",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T09:53:29.479551",
+    "attempt_id": "d903912c-8db8-4733-9fcc-2c5be53a533a",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:04:43.654471",
+    "attempt_id": "e0a9c878-371b-42d4-a96b-42de826aaf16",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:05:45.339790",
+    "attempt_id": "e3ba7a18-818f-4a64-8edd-f91d5a7df08e",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:15:31.049147",
+    "attempt_id": "725bf51b-e961-4583-915f-e45fcfe11135",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:25:47.966230",
+    "attempt_id": "c2834e7d-0e84-4096-9763-6ad2ba633d3f",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:41:39.108978",
+    "attempt_id": "e52759e7-e625-4ce5-b1da-34afed748d8e",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:43:58.965638",
+    "attempt_id": "69e1f007-b383-4c3e-9c23-b72ffcb87633",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  },
+  {
+    "timestamp": "2025-09-10T10:46:03.160704",
+    "attempt_id": "b17fd511-3349-4c04-8e5a-f3b16224ef2c",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "database_validation": {
+      "is_valid": true,
+      "confidence": 1.0,
+      "flag_id": null
+    },
+    "status": "database_validation_completed"
+  }
+]

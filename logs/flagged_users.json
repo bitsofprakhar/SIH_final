@@ -1,0 +1,542 @@
+[
+  {
+    "flag_id": "f8fad8a1-e671-4e2d-be7a-fb582b86bdde",
+    "flagged_at": "2025-09-10T01:06:20.307917",
+    "ip_address": "127.0.0.1",
+    "filename": "marksheet.jpg",
+    "extracted_data": {
+      "ms_no": null,
+      "name": null,
+      "college": "/ \u20222 School SCIENCE COLLEGE Rolt Code 21020 Rolf ND 12411 Registration No. 2t020-RS-2423-23 at the Annual Intermediate of SC'ENCE\tExamination. 2025 held in the month FEBRUARY Full Pass MARKS OBTAINED SUBJECT",
+      "total_marks": null,
+      "roll_code": null,
+      "roll_no": null,
+      "registration_no": "2t020"
+    },
+    "flag_reason": "MS_NO_NOT_FOUND_IN_OCR",
+    "validation_details": {},
+    "severity": "high"
+  },
+  {
+    "flag_id": "65f1e6df-f6a9-401c-97c7-64b4ebe3ed2c",
+    "flagged_at": "2025-09-10T01:06:20.309922",
+    "ip_address": "127.0.0.1",
+    "filename": "marksheet.jpg",
+    "extracted_data": {
+      "ms_no": null,
+      "name": null,
+      "college": "/ \u20222 School SCIENCE COLLEGE Rolt Code 21020 Rolf ND 12411 Registration No. 2t020-RS-2423-23 at the Annual Intermediate of SC'ENCE\tExamination. 2025 held in the month FEBRUARY Full Pass MARKS OBTAINED SUBJECT",
+      "total_marks": null,
+      "roll_code": null,
+      "roll_no": null,
+      "registration_no": "2t020"
+    },
+    "flag_reason": "MS_NO_NOT_FOUND_IN_OCR",
+    "validation_details": {},
+    "severity": "high"
+  },
+  {
+    "flag_id": "e4011d3f-107e-4581-9378-2f95481abfa9",
+    "flagged_at": "2025-09-10T01:13:10.838351",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "639aefb7-9c12-454c-a51c-6fe65a001bd6",
+    "flagged_at": "2025-09-10T01:15:24.463832",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "82caa8b0-bb5c-4b18-ae9c-4397e9702a03",
+    "flagged_at": "2025-09-10T01:16:08.937678",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "54d96845-23e2-4f71-9bb1-16f2e5d2fd50",
+    "flagged_at": "2025-09-10T01:16:17.589198",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "f46e4c29-bc89-494d-b825-b9b365237710",
+    "flagged_at": "2025-09-10T01:16:19.217714",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "5699ca3e-2cff-49ce-a0ce-478a7efe8e78",
+    "flagged_at": "2025-09-10T01:16:19.243505",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "55e7ffb6-de64-4240-9703-9769d39d8ee0",
+    "flagged_at": "2025-09-10T01:16:19.582910",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "0bc29160-a80c-4a92-bf08-8a207d537572",
+    "flagged_at": "2025-09-10T01:16:19.933453",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "1460944a-a23c-47e1-997a-914667260a00",
+    "flagged_at": "2025-09-10T01:16:20.313714",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "9d541792-4e1b-4eef-a9ed-7c3bc1e3e2cf",
+    "flagged_at": "2025-09-10T01:16:20.407528",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "a9266540-8d65-45c3-81a1-6ddbb692238a",
+    "flagged_at": "2025-09-10T01:47:09.669484",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "4ae4310c-ef53-4002-a24b-640fed20eb2b",
+    "flagged_at": "2025-09-10T01:47:35.518020",
+    "ip_address": "127.0.0.1",
+    "filename": "image_2.jpg",
+    "extracted_data": {
+      "ms_no": 105286,
+      "name": "Nathan Bhatia",
+      "college": ", DUMKA AFFILIATED TO SIDO KANHU MURMU UNIVERSITY MARKSHEET",
+      "total_marks": 374,
+      "roll_code": null,
+      "roll_no": 15286,
+      "registration_no": "35286"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "d8fa7515-0d5e-4dbd-9c09-7dd302f73a21",
+    "flagged_at": "2025-09-10T01:50:34.069929",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "3ae9b449-05af-4d18-9a57-dd5ad808ca50",
+    "flagged_at": "2025-09-10T01:53:15.860071",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "144ad774-6fff-4a1e-8260-cd56c789c4ee",
+    "flagged_at": "2025-09-10T02:01:30.825530",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "e7b22d09-d811-4ddf-a855-e8ded8b1341d",
+    "flagged_at": "2025-09-10T02:25:04.074269",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "3aec9b64-7ed0-4b0b-83c4-021ab444ffb0",
+    "flagged_at": "2025-09-10T02:35:41.336006",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': 'Invalid path specified in request URL', 'code': 'PGRST125', 'hint': None, 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "2da87517-194d-40be-b137-5648c9ba19b4",
+    "flagged_at": "2025-09-10T02:37:55.490431",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': 'Invalid path specified in request URL', 'code': 'PGRST125', 'hint': None, 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "500642b0-9352-41bb-a4fa-c2b53025dc94",
+    "flagged_at": "2025-09-10T02:42:50.542727",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "d855a2b7-c421-46e4-9f1d-df40e325b68e",
+    "flagged_at": "2025-09-10T02:44:52.338995",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "0b461339-9f41-4e79-a73d-87f16ca9f071",
+    "flagged_at": "2025-09-10T02:45:08.592554",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_VALIDATION_ERROR",
+    "validation_details": {
+      "error": "{'message': \"'M' is not an embedded resource in this request\", 'code': 'PGRST108', 'hint': \"Verify that 'M' is included in the 'select' query parameter.\", 'details': None}"
+    },
+    "severity": "medium"
+  },
+  {
+    "flag_id": "caa639b9-8acc-4403-a6a7-80207b230eb5",
+    "flagged_at": "2025-09-10T03:08:23.228836",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_QUERY_ERROR",
+    "validation_details": {
+      "http_status": 400,
+      "response_text": "{\"code\":\"PGRST108\",\"details\":null,\"hint\":\"Verify that 'M' is included in the 'select' query parameter.\",\"message\":\"'M' is not an embedded resource in this request\"}"
+    },
+    "severity": "high"
+  },
+  {
+    "flag_id": "1562beca-eec6-4915-a031-c9c3312ba5a3",
+    "flagged_at": "2025-09-10T03:24:50.706105",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_QUERY_ERROR",
+    "validation_details": {
+      "http_status": 400,
+      "response_text": "{\"code\":\"PGRST108\",\"details\":null,\"hint\":\"Verify that 'M' is included in the 'select' query parameter.\",\"message\":\"'M' is not an embedded resource in this request\"}"
+    },
+    "severity": "high"
+  },
+  {
+    "flag_id": "a300a1f1-7c57-4a7c-9915-f05bcfd8039e",
+    "flagged_at": "2025-09-10T03:28:50.470796",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_QUERY_ERROR",
+    "validation_details": {
+      "http_status": 400,
+      "response_text": "{\"code\":\"PGRST108\",\"details\":null,\"hint\":\"Verify that 'M' is included in the 'select' query parameter.\",\"message\":\"'M' is not an embedded resource in this request\"}"
+    },
+    "severity": "high"
+  },
+  {
+    "flag_id": "00c042ad-a29f-4f81-80a5-a5e6b191b1e8",
+    "flagged_at": "2025-09-10T03:36:28.014966",
+    "ip_address": "127.0.0.1",
+    "filename": "image_.jpg",
+    "extracted_data": {
+      "ms_no": 105000,
+      "name": "Bimala Kara",
+      "college": null,
+      "total_marks": 376,
+      "roll_code": 35000,
+      "roll_no": 15000,
+      "registration_no": "35000"
+    },
+    "flag_reason": "DATABASE_QUERY_ERROR",
+    "validation_details": {
+      "http_status": 400,
+      "response_text": "{\"code\":\"PGRST108\",\"details\":null,\"hint\":\"Verify that 'M' is included in the 'select' query parameter.\",\"message\":\"'M' is not an embedded resource in this request\"}"
+    },
+    "severity": "high"
+  }
+]

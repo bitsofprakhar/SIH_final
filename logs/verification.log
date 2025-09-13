@@ -1,0 +1,281 @@
+2025-09-10 00:56:17,309 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 206 Partial Content"
+2025-09-10 00:56:17,326 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 00:56:17,326 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 00:57:09,393 - INFO - 127.0.0.1 - - [10/Sep/2025 00:57:09] "POST /verify/single HTTP/1.1" 200 -
+2025-09-10 00:58:39,662 - INFO - 127.0.0.1 - - [10/Sep/2025 00:58:39] "[33mGET /admin/flagged_users HTTP/1.1[0m" 404 -
+2025-09-10 00:58:39,913 - INFO - 127.0.0.1 - - [10/Sep/2025 00:58:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-10 00:58:50,469 - INFO - 127.0.0.1 - - [10/Sep/2025 00:58:50] "GET /admin/flagged-users HTTP/1.1" 200 -
+2025-09-10 01:06:20,308 - WARNING - USER FLAGGED: MS_NO_NOT_FOUND_IN_OCR - MS No: None
+2025-09-10 01:06:20,310 - WARNING - USER FLAGGED: MS_NO_NOT_FOUND_IN_OCR - MS No: None
+2025-09-10 01:06:20,311 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:06:20,312 - INFO - 127.0.0.1 - - [10/Sep/2025 01:06:20] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:06:51,920 - INFO - 127.0.0.1 - - [10/Sep/2025 01:06:51] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 01:08:44,702 - INFO - 127.0.0.1 - - [10/Sep/2025 01:08:44] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 01:13:10,837 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 01:13:10,839 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 01:13:10,840 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:13:10,841 - INFO - 127.0.0.1 - - [10/Sep/2025 01:13:10] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:15:24,462 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:15:24,464 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:15:24,465 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:15:24,466 - INFO - 127.0.0.1 - - [10/Sep/2025 01:15:24] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:08,935 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:08,939 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:08,941 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:08,943 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:08] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:17,584 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:17,591 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:17,593 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:17,595 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:17] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:19,216 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:19,219 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:19,221 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:19,223 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:19] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:19,242 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:19,245 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:19,246 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:19,249 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:19] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:19,580 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:19,583 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:19,585 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:19,587 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:19] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:19,932 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:19,935 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:19,938 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:19,939 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:19] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:20,218 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:20,312 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:20,314 - ERROR - Failed to flag user: Expecting value: line 1 column 1 (char 0)
+2025-09-10 01:16:20,315 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:20,317 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:20,317 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:20,320 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:20] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:20,320 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:20] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:16:20,406 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:16:20,410 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:16:20,413 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:16:20,414 - INFO - 127.0.0.1 - - [10/Sep/2025 01:16:20] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:45:04,630 - INFO - 127.0.0.1 - - [10/Sep/2025 01:45:04] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 01:45:16,099 - INFO - 127.0.0.1 - - [10/Sep/2025 01:45:16] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 01:45:16,207 - INFO - 127.0.0.1 - - [10/Sep/2025 01:45:16] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 01:45:39,533 - INFO - 127.0.0.1 - - [10/Sep/2025 01:45:39] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 01:47:09,665 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:47:09,671 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:47:09,674 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:47:09,676 - INFO - 127.0.0.1 - - [10/Sep/2025 01:47:09] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:47:35,516 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105286 "HTTP/2 400 Bad Request"
+2025-09-10 01:47:35,519 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105286
+2025-09-10 01:47:35,521 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:47:35,522 - INFO - 127.0.0.1 - - [10/Sep/2025 01:47:35] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:50:34,068 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 01:50:34,071 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 01:50:34,077 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:50:34,079 - INFO - 127.0.0.1 - - [10/Sep/2025 01:50:34] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 01:53:15,859 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 01:53:15,863 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 01:53:15,867 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 01:53:15,868 - INFO - 127.0.0.1 - - [10/Sep/2025 01:53:15] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:00:58,837 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 206 Partial Content"
+2025-09-10 02:00:58,852 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 02:00:58,852 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 02:01:05,226 - INFO - 127.0.0.1 - - [10/Sep/2025 02:01:05] "GET / HTTP/1.1" 200 -
+2025-09-10 02:01:30,823 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 02:01:30,828 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:01:30,832 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:01:30,833 - INFO - 127.0.0.1 - - [10/Sep/2025 02:01:30] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:02:49,532 - INFO - 127.0.0.1 - - [10/Sep/2025 02:02:49] "[33mGET /flagged-users HTTP/1.1[0m" 404 -
+2025-09-10 02:03:07,870 - INFO - 127.0.0.1 - - [10/Sep/2025 02:03:07] "GET /admin/flagged-users HTTP/1.1" 200 -
+2025-09-10 02:24:11,333 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 206 Partial Content"
+2025-09-10 02:24:11,343 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 02:24:11,343 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 02:25:04,071 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 02:25:04,077 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:25:04,082 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:25:04,086 - INFO - 127.0.0.1 - - [10/Sep/2025 02:25:04] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:34:45,639 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 404 Not Found"
+2025-09-10 02:34:45,651 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 02:34:45,651 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 02:35:41,335 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 404 Not Found"
+2025-09-10 02:35:41,338 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:35:41,340 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:35:41,341 - INFO - 127.0.0.1 - - [10/Sep/2025 02:35:41] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:37:55,485 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 404 Not Found"
+2025-09-10 02:37:55,494 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:37:55,496 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:37:55,498 - INFO - 127.0.0.1 - - [10/Sep/2025 02:37:55] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:41:41,048 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 206 Partial Content"
+2025-09-10 02:41:41,060 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 02:41:41,060 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 02:42:50,540 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 02:42:50,545 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:42:50,548 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:42:50,550 - INFO - 127.0.0.1 - - [10/Sep/2025 02:42:50] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:44:28,543 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 206 Partial Content"
+2025-09-10 02:44:28,554 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 02:44:28,554 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 02:44:52,337 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 02:44:52,341 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:44:52,343 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:44:52,345 - INFO - 127.0.0.1 - - [10/Sep/2025 02:44:52] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 02:45:08,591 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=%2A&M.S+No=eq.105000 "HTTP/2 400 Bad Request"
+2025-09-10 02:45:08,594 - WARNING - USER FLAGGED: DATABASE_VALIDATION_ERROR - MS No: 105000
+2025-09-10 02:45:08,597 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 02:45:08,598 - INFO - 127.0.0.1 - - [10/Sep/2025 02:45:08] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 03:04:23,493 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:04:23,493 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:05:16,862 - INFO - 127.0.0.1 - - [10/Sep/2025 03:05:16] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 03:07:32,635 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:07:32,636 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:08:23,230 - WARNING - USER FLAGGED: DATABASE_QUERY_ERROR - MS No: 105000
+2025-09-10 03:08:23,234 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 03:08:23,236 - INFO - 127.0.0.1 - - [10/Sep/2025 03:08:23] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 03:21:08,138 - INFO - 127.0.0.1 - - [10/Sep/2025 03:21:08] "[33mPOST /verify_batch HTTP/1.1[0m" 404 -
+2025-09-10 03:21:22,413 - INFO - 127.0.0.1 - - [10/Sep/2025 03:21:22] "[33mPOST /verify_batch HTTP/1.1[0m" 404 -
+2025-09-10 03:21:42,351 - INFO - 127.0.0.1 - - [10/Sep/2025 03:21:42] "POST /generate/variations HTTP/1.1" 200 -
+2025-09-10 03:24:50,708 - WARNING - USER FLAGGED: DATABASE_QUERY_ERROR - MS No: 105000
+2025-09-10 03:24:50,712 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 03:24:50,712 - INFO - 127.0.0.1 - - [10/Sep/2025 03:24:50] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 03:28:18,478 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:28:18,479 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:28:50,474 - WARNING - USER FLAGGED: DATABASE_QUERY_ERROR - MS No: 105000
+2025-09-10 03:28:50,481 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 03:28:50,483 - INFO - 127.0.0.1 - - [10/Sep/2025 03:28:50] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 03:31:03,158 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:31:03,159 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:32:22,540 - INFO - 127.0.0.1 - - [10/Sep/2025 03:32:22] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 03:33:01,826 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:33:01,826 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:34:35,335 - INFO - 127.0.0.1 - - [10/Sep/2025 03:34:35] "[35m[1mPOST /verify/enhanced HTTP/1.1[0m" 500 -
+2025-09-10 03:36:06,064 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:36:06,065 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:36:28,016 - WARNING - USER FLAGGED: DATABASE_QUERY_ERROR - MS No: 105000
+2025-09-10 03:36:28,020 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 03:36:28,022 - INFO - 127.0.0.1 - - [10/Sep/2025 03:36:28] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 03:39:02,794 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-09-10 03:39:02,794 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 03:39:24,746 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 03:39:28,419 - INFO - 127.0.0.1 - - [10/Sep/2025 03:39:28] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 03:41:41,179 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 03:41:44,905 - INFO - 127.0.0.1 - - [10/Sep/2025 03:41:44] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 09:30:57,911 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 09:30:57,912 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 09:32:08,669 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 09:32:11,163 - INFO - 127.0.0.1 - - [10/Sep/2025 09:32:11] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 09:32:26,598 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 09:32:30,243 - INFO - 127.0.0.1 - - [10/Sep/2025 09:32:30] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 09:33:07,137 - INFO - 127.0.0.1 - - [10/Sep/2025 09:33:07] "GET /health HTTP/1.1" 200 -
+2025-09-10 09:33:10,598 - INFO - 127.0.0.1 - - [10/Sep/2025 09:33:10] "GET /health HTTP/1.1" 200 -
+2025-09-10 09:33:11,020 - INFO - 127.0.0.1 - - [10/Sep/2025 09:33:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-10 09:36:38,690 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 09:36:38,690 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 09:38:14,521 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 09:38:27,695 - INFO - 127.0.0.1 - - [10/Sep/2025 09:38:27] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 09:51:51,515 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 09:51:51,516 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 09:53:07,072 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 09:53:10,565 - INFO - 127.0.0.1 - - [10/Sep/2025 09:53:10] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 09:53:29,483 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 09:53:32,543 - INFO - 127.0.0.1 - - [10/Sep/2025 09:53:32] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:04:43,658 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:04:46,691 - INFO - 127.0.0.1 - - [10/Sep/2025 10:04:46] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:05:45,343 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:06:04,830 - INFO - 127.0.0.1 - - [10/Sep/2025 10:06:04] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:15:31,052 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:15:40,359 - INFO - 127.0.0.1 - - [10/Sep/2025 10:15:40] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:25:47,968 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:25:51,376 - INFO - 127.0.0.1 - - [10/Sep/2025 10:25:51] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:40:57,579 - INFO - 127.0.0.1 - - [10/Sep/2025 10:40:57] "[35m[1mPOST /train HTTP/1.1[0m" 504 -
+2025-09-10 10:41:39,112 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:42:06,213 - INFO - 127.0.0.1 - - [10/Sep/2025 10:42:06] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:43:58,968 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:44:02,380 - INFO - 127.0.0.1 - - [10/Sep/2025 10:44:02] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 10:46:03,163 - INFO - Logged verification attempt: database_validation_completed
+2025-09-10 10:46:06,545 - INFO - 127.0.0.1 - - [10/Sep/2025 10:46:06] "POST /verify/enhanced HTTP/1.1" 200 -
+2025-09-10 11:30:11,037 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 11:30:11,038 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 11:32:31,864 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 11:32:31,865 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 11:33:49,696 - INFO - 127.0.0.1 - - [10/Sep/2025 11:33:49] "GET /health HTTP/1.1" 200 -
+2025-09-10 11:33:49,995 - INFO - 127.0.0.1 - - [10/Sep/2025 11:33:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-10 12:21:09,644 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 12:21:09,644 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 12:22:57,371 - INFO - 127.0.0.1 - - [10/Sep/2025 12:22:57] "GET /health HTTP/1.1" 200 -
+2025-09-10 12:22:57,629 - INFO - 127.0.0.1 - - [10/Sep/2025 12:22:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-10 12:59:03,345 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 12:59:03,346 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 13:02:15,471 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 13:02:15,471 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 13:18:35,564 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 13:18:35,565 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 13:23:21,782 - INFO - HTTP Request: GET https://kwztlhywsczfajjtpjmo.supabase.co/rest/v1/Student_Data?select=count&limit=1 "HTTP/2 206 Partial Content"
+2025-09-10 13:23:21,896 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.121.159.39:5000
+2025-09-10 13:23:21,896 - INFO - [33mPress CTRL+C to quit[0m

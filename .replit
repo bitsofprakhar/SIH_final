@@ -17,10 +17,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Django Server"
+args = "Django App"
 
 [[workflows.workflow]]
-name = "Django Server"
+name = "Django App"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -36,7 +36,7 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 36185
+localPort = 38441
 externalPort = 3000
 
 [deployment]

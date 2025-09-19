@@ -17,10 +17,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Django Application"
+args = "Django Frontend"
 
 [[workflows.workflow]]
-name = "Django Application"
+name = "Django Frontend"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -34,10 +34,6 @@ outputType = "webview"
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 45619
-externalPort = 3000
 
 [deployment]
 deploymentTarget = "autoscale"

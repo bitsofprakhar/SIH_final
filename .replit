@@ -38,3 +38,7 @@ externalPort = 80
 [[ports]]
 localPort = 37509
 externalPort = 3000
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["python", "backened/shaktishield/manage.py", "runserver", "0.0.0.0:5000"]

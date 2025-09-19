@@ -1,8 +1,8 @@
-modules = ["web", "nodejs-20", "python-3.11"]
+modules = ["python-3.11", "web", "nodejs-20"]
 
 [nix]
 channel = "stable-25_05"
-packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "tcl", "tk", "zlib"]
+packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "openssl", "postgresql", "tcl", "tk", "zlib"]
 
 [agent]
 expertMode = true
@@ -17,10 +17,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Django Server"
+args = "Django Application"
 
 [[workflows.workflow]]
-name = "Django Server"
+name = "Django Application"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -36,9 +36,10 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 37509
+localPort = 42311
 externalPort = 3000
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["python", "backened/shaktishield/manage.py", "runserver", "0.0.0.0:5000"]
+run = ["gunicorn", "--bind", "0.0.0.0:5000", "--reuse-port", "shaktishield.wsgi:application"]
+build = ["bash", "-c", "cd backened/shaktishield && python manage.py collectstatic --noinput"]

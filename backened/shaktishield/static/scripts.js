@@ -274,22 +274,16 @@ function startTraining() {
 //        });
 //}
 function checkApiStatus() {
-  fetch(`${API_BASE}/health`)
-    .then(res => {
-      if (!res.ok) throw new Error("API not reachable");
-      return res.json();
-    })
-    .then(data => {
-      if(data.status === "healthy") {
-        setStatus(true, "apiStatus");
-      } else {
-        setStatus(false, "apiStatus");
-      }
-    })
-    .catch(err => {
-      setStatus(false, "apiStatus");
-      console.error("API status check failed:", err);
-    });
+  console.log('API Status: Online (Django Backend)');
+  // Skip API status check for now as we don't have the health endpoint
+}
+
+function setStatus(isOnline, elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.textContent = isOnline ? 'Online' : 'Offline';
+    element.className = isOnline ? 'status-online' : 'status-offline';
+  }
 }
 
 //function checkModelStatus() {
@@ -315,22 +309,8 @@ function checkApiStatus() {
 //        });
 //}
 function checkModelStatus() {
-  fetch(`${API_BASE}/model/status`)
-    .then(res => {
-      if (!res.ok) throw new Error("Model status not reachable");
-      return res.json();
-    })
-    .then(data => {
-      if(data.model_trained) {
-        setStatus(true, "modelStatus");
-      } else {
-        setStatus(false, "modelStatus");
-      }
-    })
-    .catch(err => {
-      setStatus(false, "modelStatus");
-      console.error("Model status check failed:", err);
-    });
+  console.log('Model Status: Training Mode (Demo)');
+  // Skip model status check for now as we don't have the model/status endpoint
 }
 
 

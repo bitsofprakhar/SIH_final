@@ -41,9 +41,9 @@ def index_view(request):
         content = content.replace('href="style.css"', 'href="/static/style.css"')
         content = content.replace('src="scripts.js"', 'src="/static/scripts.js"')
         
-        return HttpResponse(content, content_type='text/html')
+        return HttpResponse(content.encode('utf-8'), content_type='text/html')
     except FileNotFoundError:
-        return HttpResponse("Frontend not found", status=404)
+        return HttpResponse(b"Frontend not found", status=404)
 
 class CertificateUploadView(APIView):
     def post(self, request, format=None):

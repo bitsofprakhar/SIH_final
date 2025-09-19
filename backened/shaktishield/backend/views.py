@@ -20,48 +20,56 @@ from django.conf import settings
 from django.core.cache import cache
 
 def get_reference_certificate_hashes():
-    """Get SHA-256 hashes of all reference certificates (cached for performance)"""
-    cache_key = 'reference_cert_hashes'
-    hashes = cache.get(cache_key)
+    """Get SHA-256 hashes of all reference certificates (no caching for accurate verification)"""
+    hashes = set()
+    certificates_dir = os.path.join(settings.MEDIA_ROOT, 'certificates')
     
-    if hashes is None:
-        hashes = set()
-        certificates_dir = os.path.join(settings.MEDIA_ROOT, 'certificates')
-        
-        if os.path.exists(certificates_dir):
-            for cert_file in os.listdir(certificates_dir):
-                cert_path = os.path.join(certificates_dir, cert_file)
-                if os.path.isfile(cert_path):
-                    try:
-                        with open(cert_path, 'rb') as f:
-                            file_hash = hashlib.sha256(f.read()).hexdigest()
+    if os.path.exists(certificates_dir):
+        for cert_file in os.listdir(certificates_dir):
+            cert_path = os.path.join(certificates_dir, cert_file)
+            if os.path.isfile(cert_path) and not cert_file.startswith('.'):
+                try:
+                    with open(cert_path, 'rb') as f:
+                        file_content = f.read()
+                        # Only process files that have actual content
+                        if len(file_content) > 0:
+                            file_hash = hashlib.sha256(file_content).hexdigest()
                             hashes.add(file_hash)
-                    except Exception:
-                        continue
-        
-        # Cache for 1 hour (3600 seconds)
-        cache.set(cache_key, hashes, 3600)
+                            print(f"Reference cert: {cert_file} -> hash: {file_hash[:16]}...")
+                except Exception as e:
+                    print(f"Error reading reference cert {cert_file}: {e}")
+                    continue
     
+    print(f"Total reference certificate hashes loaded: {len(hashes)}")
     return hashes
 
 def run_ocr_and_validate(file_path):
-    """Validate uploaded certificate against reference certificates using SHA-256 hash comparison"""
+    """Strictly validate uploaded certificate against ONLY the provided reference certificates"""
     try:
         # Read the uploaded file and compute SHA-256 hash
         with open(file_path, 'rb') as f:
-            uploaded_file_hash = hashlib.sha256(f.read()).hexdigest()
+            file_content = f.read()
+            # Ensure file has content
+            if len(file_content) == 0:
+                print("Uploaded file is empty")
+                return "INVALID"
+                
+            uploaded_file_hash = hashlib.sha256(file_content).hexdigest()
+            print(f"Uploaded file hash: {uploaded_file_hash[:16]}...")
         
-        # Get reference certificate hashes
+        # Get reference certificate hashes (fresh, no cache)
         reference_hashes = get_reference_certificate_hashes()
         
-        # Check if uploaded file hash matches any reference certificate
+        # STRICT verification: file must exactly match one of the reference certificates
         if uploaded_file_hash in reference_hashes:
+            print("✅ MATCH FOUND: File matches a reference certificate")
             return "VALID"
         else:
+            print("❌ NO MATCH: File does not match any reference certificate")
             return "INVALID"
             
     except Exception as e:
-        # If any error occurs, mark as invalid
+        print(f"Verification error: {e}")
         return "INVALID"
 
 from django.views.decorators.csrf import ensure_csrf_cookie

@@ -12,89 +12,63 @@
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="card-title mb-4">
-                    <i class="bi bi-info-circle"></i> Batch Certificate Verification Portal
+                    <i class="bi bi-upload"></i> Upload Multiple Certificates
                 </h5>
                 
-                <div class="alert alert-success">
-                    <h6 class="alert-heading">
-                        <i class="bi bi-files"></i> About Batch Certificate Verification
-                    </h6>
-                    <p class="mb-0">
-                        This portal is designed for verifying multiple certificates simultaneously, providing efficient 
-                        bulk processing capabilities for institutions and organizations requiring verification of numerous academic documents.
-                    </p>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-4">
-                        <div class="card bg-light h-100">
-                            <div class="card-body text-center">
-                                <i class="bi bi-lightning text-primary" style="font-size: 2rem;"></i>
-                                <h6 class="card-title mt-3">High-Speed Processing</h6>
-                                <p class="card-text small">
-                                    Process hundreds of certificates simultaneously with advanced parallel processing capabilities.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-light h-100">
-                            <div class="card-body text-center">
-                                <i class="bi bi-graph-up text-success" style="font-size: 2rem;"></i>
-                                <h6 class="card-title mt-3">Detailed Analytics</h6>
-                                <p class="card-text small">
-                                    Comprehensive verification reports with statistics and individual certificate status tracking.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-light h-100">
-                            <div class="card-body text-center">
-                                <i class="bi bi-download text-info" style="font-size: 2rem;"></i>
-                                <h6 class="card-title mt-3">Export Results</h6>
-                                <p class="card-text small">
-                                    Download verification results in multiple formats including CSV, PDF, and Excel reports.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mt-4 bg-light">
-                    <div class="card-body">
-                        <h6 class="card-title">
-                            <i class="bi bi-gear"></i> Batch Processing Features
-                        </h6>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle text-success"></i> Bulk certificate verification</li>
-                                    <li><i class="bi bi-check-circle text-success"></i> Progress tracking and monitoring</li>
-                                    <li><i class="bi bi-check-circle text-success"></i> Error handling and reporting</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle text-success"></i> Real-time status updates</li>
-                                    <li><i class="bi bi-check-circle text-success"></i> Automated result compilation</li>
-                                    <li><i class="bi bi-check-circle text-success"></i> Batch size optimization</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-4">
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i>
-                        <strong>Note:</strong> File upload functionality has been temporarily disabled. 
-                        Please contact the system administrator for batch verification requests.
+                <form id="batchVerificationForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <i class="bi bi-cloud-upload text-muted" style="font-size: 3rem;"></i>
+                        <h5 class="mt-3">Drag and drop multiple certificates here</h5>
+                        <p class="text-muted">or click to browse files</p>
+                        <p class="small text-muted">Supported formats: JPG, PNG, PDF (Max size: 10MB each)</p>
+                        <input type="file" 
+                               id="fileInput" 
+                               name="files" 
+                               accept="image/*,application/pdf" 
+                               class="d-none" 
+                               multiple 
+                               required>
                     </div>
                     
-                    <a href="{% url 'index' %}" class="btn btn-primary btn-lg">
-                        <i class="bi bi-arrow-left"></i> Back to Portal Selection
-                    </a>
+                    <div id="filePreview" class="mt-3 d-none">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="mb-0">Selected Files:</h6>
+                            <button type="button" class="btn btn-outline-danger btn-sm" id="clearAllBtn">
+                                <i class="bi bi-trash"></i> Clear All
+                            </button>
+                        </div>
+                        <div id="fileList" class="row g-2"></div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg" id="verifyButton">
+                            <i class="bi bi-shield-check"></i> Verify All Certificates
+                        </button>
+                        <a href="{% url 'index' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Back to Portal Selection
+                        </a>
+                    </div>
+                </form>
+                
+                <!-- Loading State -->
+                <div id="loadingState" class="text-center mt-4 d-none">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Processing...</span>
+                    </div>
+                    <p class="mt-3">Processing batch verification, please wait...</p>
+                    <div class="progress mt-3">
+                        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Results Section -->
+                <div id="resultSection" class="d-none">
+                    <h5 class="mb-4">
+                        <i class="bi bi-list-check"></i> Verification Results
+                    </h5>
+                    <div id="resultsList"></div>
+                    <div id="summaryStats" class="mt-4"></div>
                 </div>
             </div>
         </div>
@@ -103,5 +77,210 @@
 {% endblock %}
 
 {% block extra_js %}
-<!-- JavaScript functionality removed with file upload features -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fileUploadArea = document.getElementById('fileUploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    const fileList = document.getElementById('fileList');
+    const batchVerificationForm = document.getElementById('batchVerificationForm');
+    const verifyButton = document.getElementById('verifyButton');
+    const loadingState = document.getElementById('loadingState');
+    const resultSection = document.getElementById('resultSection');
+    const progressBar = document.getElementById('progressBar');
+    const resultsList = document.getElementById('resultsList');
+    const summaryStats = document.getElementById('summaryStats');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+
+    let selectedFiles = [];
+
+    // File upload area click handler
+    fileUploadArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    // Drag and drop handlers
+    fileUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.add('dragover');
+    });
+
+    fileUploadArea.addEventListener('dragleave', () => {
+        fileUploadArea.classList.remove('dragover');
+    });
+
+    fileUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.remove('dragover');
+        const files = Array.from(e.dataTransfer.files);
+        selectedFiles = files;
+        showFilePreview(files);
+    });
+
+    // File input change handler
+    fileInput.addEventListener('change', (e) => {
+        selectedFiles = Array.from(e.target.files);
+        showFilePreview(selectedFiles);
+    });
+
+    function showFilePreview(files) {
+        fileList.innerHTML = '';
+        files.forEach((file, index) => {
+            const fileCard = document.createElement('div');
+            fileCard.className = 'col-md-6 col-lg-4';
+            fileCard.innerHTML = `
+                <div class="card">
+                    <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            <i class="bi bi-file-earmark"></i> ${file.name}
+                        </small>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeFile(${index})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            fileList.appendChild(fileCard);
+        });
+        filePreview.classList.remove('d-none');
+    }
+
+    window.removeFile = function(index) {
+        selectedFiles.splice(index, 1);
+        if (selectedFiles.length === 0) {
+            clearAllFiles();
+        } else {
+            showFilePreview(selectedFiles);
+        }
+    };
+
+    function clearAllFiles() {
+        fileInput.value = '';
+        selectedFiles = [];
+        fileList.innerHTML = '';
+        filePreview.classList.add('d-none');
+        resultSection.classList.add('d-none');
+    }
+
+    // Clear all files button handler
+    clearAllBtn.addEventListener('click', clearAllFiles);
+
+    // Form submission
+    batchVerificationForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loading state
+        verifyButton.disabled = true;
+        loadingState.classList.remove('d-none');
+        resultSection.classList.add('d-none');
+
+        const results = [];
+        let validCount = 0;
+        let invalidCount = 0;
+
+        // Process files one by one
+        for (let i = 0; i < selectedFiles.length; i++) {
+            const file = selectedFiles[i];
+            const progress = ((i + 1) / selectedFiles.length) * 100;
+            progressBar.style.width = progress + '%';
+
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                const response = await fetch('/upload/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                });
+
+                const result = await response.json();
+                result.fileName = file.name;
+                results.push(result);
+
+                if (result.result === 'VALID') {
+                    validCount++;
+                } else {
+                    invalidCount++;
+                }
+            } catch (error) {
+                results.push({
+                    fileName: file.name,
+                    result: 'ERROR',
+                    message: 'Processing failed'
+                });
+                invalidCount++;
+            }
+        }
+
+        showBatchResults(results, validCount, invalidCount);
+        verifyButton.disabled = false;
+        loadingState.classList.add('d-none');
+    });
+
+    function showBatchResults(results, validCount, invalidCount) {
+        // Show summary stats
+        const totalFiles = results.length;
+        summaryStats.innerHTML = `
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h3 class="text-primary">${totalFiles}</h3>
+                            <p class="mb-0">Total Files</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h3 class="text-success">${validCount}</h3>
+                            <p class="mb-0">Authentic</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h3 class="text-danger">${invalidCount}</h3>
+                            <p class="mb-0">Invalid</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Show individual results
+        resultsList.innerHTML = '';
+        results.forEach((result, index) => {
+            const isValid = result.result === 'VALID';
+            const alertClass = isValid ? 'alert-success' : 'alert-danger';
+            const iconClass = isValid ? 'bi-check-circle' : 'bi-x-circle';
+            const statusText = isValid ? 'AUTHENTIC' : 'INVALID';
+
+            const resultCard = document.createElement('div');
+            resultCard.className = 'mb-3';
+            resultCard.innerHTML = `
+                <div class="alert ${alertClass}">
+                    <div class="d-flex align-items-center">
+                        <i class="${iconClass} me-3" style="font-size: 1.5rem;"></i>
+                        <div class="flex-grow-1">
+                            <strong>${result.fileName}</strong>
+                            <p class="mb-0">Status: ${statusText}</p>
+                        </div>
+                        <div class="text-end">
+                            <small>ID: ${result.id || 'N/A'}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+            resultsList.appendChild(resultCard);
+        });
+
+        resultSection.classList.remove('d-none');
+    }
+});
+</script>
 {% endblock %}

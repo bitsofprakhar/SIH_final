@@ -35,62 +35,57 @@
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="card-title mb-4">
-                    <i class="bi bi-info-circle"></i> Practice Certificate Verification
+                    <i class="bi bi-upload"></i> Practice Certificate Verification
                 </h5>
                 
-                <div class="alert alert-warning">
-                    <h6 class="alert-heading">
-                        <i class="bi bi-mortarboard"></i> Training Mode
-                    </h6>
-                    <p class="mb-0">
-                        This training portal provides educational content about certificate verification processes. 
-                        Learn the fundamentals of document authentication and verification techniques used by the JAC system.
-                    </p>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="card bg-light h-100">
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    <i class="bi bi-book text-primary"></i> Learning Resources
-                                </h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-dot"></i> Verification process documentation</li>
-                                    <li><i class="bi bi-dot"></i> Security feature identification</li>
-                                    <li><i class="bi bi-dot"></i> Common forgery detection techniques</li>
-                                    <li><i class="bi bi-dot"></i> Best practices and guidelines</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card bg-light h-100">
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    <i class="bi bi-cpu text-success"></i> Training Features
-                                </h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-dot"></i> Interactive learning modules</li>
-                                    <li><i class="bi bi-dot"></i> Step-by-step verification guides</li>
-                                    <li><i class="bi bi-dot"></i> Example case studies</li>
-                                    <li><i class="bi bi-dot"></i> Knowledge assessment tools</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-4">
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i>
-                        <strong>Note:</strong> File upload functionality has been temporarily disabled. 
-                        Training resources are available through the documentation portal.
+                <form id="trainingVerificationForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <i class="bi bi-cloud-upload text-muted" style="font-size: 3rem;"></i>
+                        <h5 class="mt-3">Upload a certificate for training verification</h5>
+                        <p class="text-muted">or click to browse files</p>
+                        <p class="small text-muted">Supported formats: JPG, PNG, PDF (Max size: 10MB)</p>
+                        <input type="file" 
+                               id="fileInput" 
+                               name="file" 
+                               accept="image/*,application/pdf" 
+                               class="d-none" 
+                               required>
                     </div>
                     
-                    <a href="{% url 'index' %}" class="btn btn-primary btn-lg">
-                        <i class="bi bi-arrow-left"></i> Back to Portal Selection
-                    </a>
+                    <div id="filePreview" class="mt-3 d-none">
+                        <div class="alert alert-info d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="bi bi-file-earmark"></i>
+                                <strong>Selected file:</strong> <span id="fileName"></span>
+                            </div>
+                            <button type="button" class="btn btn-outline-danger btn-sm" id="removeFileBtn">
+                                <i class="bi bi-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-warning btn-lg" id="verifyButton">
+                            <i class="bi bi-shield-check"></i> Practice Verification
+                        </button>
+                        <a href="{% url 'index' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Back to Portal Selection
+                        </a>
+                    </div>
+                </form>
+                
+                <!-- Loading State -->
+                <div id="loadingState" class="text-center mt-4 d-none">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Analyzing...</span>
+                    </div>
+                    <p class="mt-3">Analyzing certificate for training purposes...</p>
+                </div>
+                
+                <!-- Results Section -->
+                <div id="resultSection" class="d-none">
+                    <!-- Results will be populated by JavaScript -->
                 </div>
 
                 <!-- Training Tips -->
@@ -126,5 +121,137 @@
 {% endblock %}
 
 {% block extra_js %}
-<!-- JavaScript functionality removed with file upload features -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fileUploadArea = document.getElementById('fileUploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    const fileName = document.getElementById('fileName');
+    const trainingVerificationForm = document.getElementById('trainingVerificationForm');
+    const verifyButton = document.getElementById('verifyButton');
+    const loadingState = document.getElementById('loadingState');
+    const resultSection = document.getElementById('resultSection');
+    const removeFileBtn = document.getElementById('removeFileBtn');
+
+    // File upload area click handler
+    fileUploadArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    // Drag and drop handlers
+    fileUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.add('dragover');
+    });
+
+    fileUploadArea.addEventListener('dragleave', () => {
+        fileUploadArea.classList.remove('dragover');
+    });
+
+    fileUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            fileInput.files = files;
+            showFilePreview(files[0]);
+        }
+    });
+
+    // File input change handler
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            showFilePreview(e.target.files[0]);
+        }
+    });
+
+    function showFilePreview(file) {
+        fileName.textContent = file.name;
+        filePreview.classList.remove('d-none');
+    }
+
+    function removeFile() {
+        fileInput.value = '';
+        filePreview.classList.add('d-none');
+        fileName.textContent = '';
+        resultSection.classList.add('d-none');
+    }
+
+    // Remove file button handler
+    removeFileBtn.addEventListener('click', removeFile);
+
+    // Form submission
+    trainingVerificationForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(trainingVerificationForm);
+        
+        // Show loading state
+        verifyButton.disabled = true;
+        loadingState.classList.remove('d-none');
+        resultSection.classList.add('d-none');
+
+        try {
+            const response = await fetch('/upload/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            });
+
+            const result = await response.json();
+            showTrainingResult(result);
+        } catch (error) {
+            showError('An error occurred during verification. Please try again.');
+        } finally {
+            verifyButton.disabled = false;
+            loadingState.classList.add('d-none');
+        }
+    });
+
+    function showTrainingResult(result) {
+        const isValid = result.result === 'VALID';
+        const iconClass = isValid ? 'bi-check-circle' : 'bi-x-circle';
+        const statusText = isValid ? 'AUTHENTIC' : 'INVALID';
+        const message = isValid 
+            ? 'The certificate has been verified as authentic and matches our reference database.'
+            : 'The certificate could not be verified. It may be forged or not in our reference database.';
+
+        const trainingExplanation = isValid
+            ? 'This certificate passed verification because: It matches exactly with a certificate in our reference database, the file hash comparison was successful, and all security checks passed.'
+            : 'This certificate failed verification because: It does not match any certificate in our reference database, the file hash comparison failed, and this may indicate the certificate is forged or altered.';
+
+        resultSection.innerHTML = 
+            '<div class="result-card ' + (isValid ? 'result-valid' : 'result-invalid') + '">' +
+                '<div class="result-icon">' +
+                    '<i class="' + iconClass + '"></i>' +
+                '</div>' +
+                '<h4 class="result-title">Training Result: ' + statusText + '</h4>' +
+                '<p class="result-message">' + message + '</p>' +
+                '<div class="mt-3">' +
+                    '<small class="text-muted">Verification ID: ' + (result.id || 'N/A') + '</small>' +
+                '</div>' +
+            '</div>' +
+            '<div class="card mt-4 bg-light">' +
+                '<div class="card-body">' +
+                    '<h6 class="card-title">' +
+                        '<i class="bi bi-mortarboard"></i> Learning Explanation' +
+                    '</h6>' +
+                    '<p class="card-text">' + trainingExplanation + '</p>' +
+                '</div>' +
+            '</div>';
+        resultSection.classList.remove('d-none');
+    }
+
+    function showError(message) {
+        resultSection.innerHTML = 
+            '<div class="alert alert-danger">' +
+                '<i class="bi bi-exclamation-triangle"></i>' +
+                '<strong>Error:</strong> ' + message +
+            '</div>';
+        resultSection.classList.remove('d-none');
+    }
+});
+</script>
 {% endblock %}

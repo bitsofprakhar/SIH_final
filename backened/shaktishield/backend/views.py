@@ -11,17 +11,18 @@ from .models import Certificate
 from .serializers import CertificateSerializer
 
 # Enhanced certificate validation against preloaded certificates
-def run_ocr_and_validate(file_path):
-    import hashlib
-    import os
-    from django.conf import settings
+import hashlib
+import os
+from django.conf import settings
+from django.core.cache import cache
+
+def get_reference_certificate_hashes():
+    """Get SHA-256 hashes of all reference certificates (cached for performance)"""
+    cache_key = 'reference_cert_hashes'
+    hashes = cache.get(cache_key)
     
-    try:
-        # Read the uploaded file
-        with open(file_path, 'rb') as f:
-            uploaded_file_hash = hashlib.md5(f.read()).hexdigest()
-        
-        # Check against preloaded certificates
+    if hashes is None:
+        hashes = set()
         certificates_dir = os.path.join(settings.MEDIA_ROOT, 'certificates')
         
         if os.path.exists(certificates_dir):
@@ -30,21 +31,40 @@ def run_ocr_and_validate(file_path):
                 if os.path.isfile(cert_path):
                     try:
                         with open(cert_path, 'rb') as f:
-                            cert_hash = hashlib.md5(f.read()).hexdigest()
-                        
-                        # If hashes match, certificate is genuine
-                        if uploaded_file_hash == cert_hash:
-                            return "VALID"
+                            file_hash = hashlib.sha256(f.read()).hexdigest()
+                            hashes.add(file_hash)
                     except Exception:
                         continue
         
-        # If no match found, certificate is invalid
-        return "INVALID"
+        # Cache for 1 hour (3600 seconds)
+        cache.set(cache_key, hashes, 3600)
+    
+    return hashes
+
+def run_ocr_and_validate(file_path):
+    """Validate uploaded certificate against reference certificates using SHA-256 hash comparison"""
+    try:
+        # Read the uploaded file and compute SHA-256 hash
+        with open(file_path, 'rb') as f:
+            uploaded_file_hash = hashlib.sha256(f.read()).hexdigest()
         
+        # Get reference certificate hashes
+        reference_hashes = get_reference_certificate_hashes()
+        
+        # Check if uploaded file hash matches any reference certificate
+        if uploaded_file_hash in reference_hashes:
+            return "VALID"
+        else:
+            return "INVALID"
+            
     except Exception as e:
         # If any error occurs, mark as invalid
         return "INVALID"
 
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.utils.decorators import method_decorator
+
+@ensure_csrf_cookie
 def index_view(request):
     """Serve the government certificate verification portal"""
     from django.template.loader import render_to_string
@@ -577,20 +597,36 @@ def index_view(request):
 
 class CertificateUploadView(APIView):
     def post(self, request, format=None):
-        serializer = CertificateSerializer(data=request.data)
-        if serializer.is_valid():
-            certificate = serializer.save()
-            # Run certificate validation against preloaded certificates
-            result = run_ocr_and_validate(certificate.file.path)
-            certificate.result = result
-            certificate.save()
+        try:
+            # Validate file size and type before processing
+            file = request.FILES.get('file')
+            if not file:
+                return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
             
-            # Return JSON response expected by frontend
-            response_data = {
-                'id': certificate.id,
-                'result': result,
-                'message': 'Certificate verified successfully' if result == 'VALID' else 'Certificate verification failed',
-                'uploaded_at': certificate.uploaded_at.isoformat()
-            }
-            return Response(response_data, status=status.HTTP_200_OK)
-        return Response({'error': 'Invalid file uploaded'}, status=status.HTTP_400_BAD_REQUEST)
+            # Server-side validation
+            if file.size > 10 * 1024 * 1024:  # 10MB limit
+                return Response({'error': 'File size cannot exceed 10MB'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf']
+            if hasattr(file, 'content_type') and file.content_type not in allowed_types:
+                return Response({'error': 'Only JPG, PNG, and PDF files are allowed'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            serializer = CertificateSerializer(data=request.data)
+            if serializer.is_valid():
+                certificate = serializer.save()
+                # Run certificate validation against preloaded certificates
+                result = run_ocr_and_validate(certificate.file.path)
+                certificate.result = result
+                certificate.save()
+                
+                # Return JSON response expected by frontend
+                response_data = {
+                    'id': certificate.id,
+                    'result': result,
+                    'message': 'Certificate verified successfully' if result == 'VALID' else 'Certificate verification failed',
+                    'uploaded_at': certificate.uploaded_at.isoformat()
+                }
+                return Response(response_data, status=status.HTTP_200_OK)
+            return Response({'error': 'Invalid file data'}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'error': 'Certificate verification failed'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware', # Disabled for Replit preview
 ]
 
 # CORS configuration
@@ -62,11 +62,18 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.replit.dev',
     'https://*.repl.co',
     'https://*.replit.app',
+    'https://*.replit.run',
+    'https://localhost:5000',
+    'http://localhost:5000',
 ]
 
 # Allow embedding in iframes for Replit preview
 X_FRAME_OPTIONS = 'ALLOWALL'
 SECURE_CONTENT_TYPE_NOSNIFF = False
+
+# Additional security settings for Replit environment
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+SECURE_REFERRER_POLICY = None
 
 ROOT_URLCONF = 'shaktishield.urls'
 

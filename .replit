@@ -17,10 +17,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Django App"
+args = "Django Server"
 
 [[workflows.workflow]]
-name = "Django App"
+name = "Django Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]

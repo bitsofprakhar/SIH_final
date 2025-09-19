@@ -37,6 +37,10 @@ def index_view(request):
         content = content.replace("const API_BASE_URL = 'http://127.0.0.1:5000';", 
                                 f"const API_BASE_URL = 'https://{current_domain}';")
         
+        # Fix the static file references
+        content = content.replace('href="style.css"', 'href="/static/style.css"')
+        content = content.replace('src="scripts.js"', 'src="/static/scripts.js"')
+        
         return HttpResponse(content, content_type='text/html')
     except FileNotFoundError:
         return HttpResponse("Frontend not found", status=404)

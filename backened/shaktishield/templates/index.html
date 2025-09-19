@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Certificate Verification Portal - JAC{% endblock %}
+
+{% block header_icon %}bi bi-house-door{% endblock %}
+{% block header_title %}Certificate Verification Portals{% endblock %}
+{% block header_subtitle %}Select the appropriate portal for your verification needs{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 text-center portal-card" style="cursor: pointer;" onclick="location.href='{% url 'single_verification' %}'">
+            <div class="card-body p-4">
+                <div class="text-primary mb-3" style="font-size: 4rem;">
+                    <i class="bi bi-file-text"></i>
+                </div>
+                <h4 class="card-title">Single Verification</h4>
+                <p class="card-text">Verify individual certificates one at a time with detailed analysis</p>
+                <a href="{% url 'single_verification' %}" class="btn btn-primary">
+                    <i class="bi bi-arrow-right"></i> Enter Portal
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 text-center portal-card" style="cursor: pointer;" onclick="location.href='{% url 'batch_verification' %}'">
+            <div class="card-body p-4">
+                <div class="text-success mb-3" style="font-size: 4rem;">
+                    <i class="bi bi-files"></i>
+                </div>
+                <h4 class="card-title">Batch Verification</h4>
+                <p class="card-text">Verify multiple certificates simultaneously for efficient processing</p>
+                <a href="{% url 'batch_verification' %}" class="btn btn-success">
+                    <i class="bi bi-arrow-right"></i> Enter Portal
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 text-center portal-card" style="cursor: pointer;" onclick="location.href='{% url 'training_verification' %}'">
+            <div class="card-body p-4">
+                <div class="text-warning mb-3" style="font-size: 4rem;">
+                    <i class="bi bi-mortarboard"></i>
+                </div>
+                <h4 class="card-title">Training Verification</h4>
+                <p class="card-text">Training portal for learning the certificate verification process</p>
+                <a href="{% url 'training_verification' %}" class="btn btn-warning">
+                    <i class="bi bi-arrow-right"></i> Enter Portal
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="bi bi-info-circle"></i> System Information
+                </h5>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="badge bg-success p-2">
+                            <i class="bi bi-check-circle"></i> System Online
+                        </div>
+                        <p class="small mt-2 mb-0">All verification services are operational</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="badge bg-info p-2">
+                            <i class="bi bi-shield-check"></i> Secure Connection
+                        </div>
+                        <p class="small mt-2 mb-0">Your data is protected with encryption</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="badge bg-primary p-2">
+                            <i class="bi bi-clock"></i> Real-time Processing
+                        </div>
+                        <p class="small mt-2 mb-0">Instant verification results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .portal-card {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .portal-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock %}

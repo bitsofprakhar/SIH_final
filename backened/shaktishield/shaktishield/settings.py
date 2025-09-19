@@ -75,6 +75,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = False
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 SECURE_REFERRER_POLICY = None
 
+# Configure Django to trust Replit reverse proxy for proper HTTPS redirects
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 ROOT_URLCONF = 'shaktishield.urls'
 
 TEMPLATES = [

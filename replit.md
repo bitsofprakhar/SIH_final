@@ -39,6 +39,15 @@ This is a Django-based document verification system designed for the Jharkhand A
 - Added workflow for development server on port 5000
 - Successfully imported GitHub project and made it functional in Replit environment
 
+## Portal Transformation (September 19, 2025)
+- **Removed** training and verification portals as requested
+- **Created** streamlined government superuser portal with professional design
+- **Implemented** secure certificate verification against preloaded reference certificates
+- **Fixed** critical security vulnerability (separated upload/reference directories)
+- **Enhanced** security with SHA-256 hashing and proper validation
+- **Added** CSRF protection and comprehensive error handling
+- **Performance** optimized with hash caching for reference certificates
+
 ## Project Architecture
 The system is designed as a document verification portal with:
 1. Training portal for uploading authentic documents

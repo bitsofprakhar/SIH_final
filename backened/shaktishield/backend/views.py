@@ -10,11 +10,40 @@ from rest_framework import status
 from .models import Certificate
 from .serializers import CertificateSerializer
 
-# Dummy OCR/validation (replace with real call)
+# Enhanced certificate validation against preloaded certificates
 def run_ocr_and_validate(file_path):
-    # Integrate your OCR and AI here
-    # For demo, just return a dummy result
-    return "Genuine" if "valid" in file_path else "Fake"
+    import hashlib
+    import os
+    from django.conf import settings
+    
+    try:
+        # Read the uploaded file
+        with open(file_path, 'rb') as f:
+            uploaded_file_hash = hashlib.md5(f.read()).hexdigest()
+        
+        # Check against preloaded certificates
+        certificates_dir = os.path.join(settings.MEDIA_ROOT, 'certificates')
+        
+        if os.path.exists(certificates_dir):
+            for cert_file in os.listdir(certificates_dir):
+                cert_path = os.path.join(certificates_dir, cert_file)
+                if os.path.isfile(cert_path):
+                    try:
+                        with open(cert_path, 'rb') as f:
+                            cert_hash = hashlib.md5(f.read()).hexdigest()
+                        
+                        # If hashes match, certificate is genuine
+                        if uploaded_file_hash == cert_hash:
+                            return "VALID"
+                    except Exception:
+                        continue
+        
+        # If no match found, certificate is invalid
+        return "INVALID"
+        
+    except Exception as e:
+        # If any error occurs, mark as invalid
+        return "INVALID"
 
 def index_view(request):
     """Serve the government certificate verification portal"""
@@ -551,9 +580,17 @@ class CertificateUploadView(APIView):
         serializer = CertificateSerializer(data=request.data)
         if serializer.is_valid():
             certificate = serializer.save()
-            # Run OCR and validation after save
+            # Run certificate validation against preloaded certificates
             result = run_ocr_and_validate(certificate.file.path)
             certificate.result = result
             certificate.save()
-            return Response(CertificateSerializer(certificate).data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Return JSON response expected by frontend
+            response_data = {
+                'id': certificate.id,
+                'result': result,
+                'message': 'Certificate verified successfully' if result == 'VALID' else 'Certificate verification failed',
+                'uploaded_at': certificate.uploaded_at.isoformat()
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+        return Response({'error': 'Invalid file uploaded'}, status=status.HTTP_400_BAD_REQUEST)

@@ -57,6 +57,13 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+# CSRF configuration for Replit environment
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.replit.dev',
+    'https://*.repl.co',
+    'https://*.replit.app',
+]
+
 # Allow embedding in iframes for Replit preview
 X_FRAME_OPTIONS = 'ALLOWALL'
 SECURE_CONTENT_TYPE_NOSNIFF = False

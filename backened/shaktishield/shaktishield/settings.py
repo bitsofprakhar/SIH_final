@@ -57,6 +57,10 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+# Allow embedding in iframes for Replit preview
+X_FRAME_OPTIONS = 'ALLOWALL'
+SECURE_CONTENT_TYPE_NOSNIFF = False
+
 ROOT_URLCONF = 'shaktishield.urls'
 
 TEMPLATES = [

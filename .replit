@@ -41,5 +41,5 @@ externalPort = 3000
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--chdir", "backened/shaktishield", "shaktishield.wsgi:application"]
+run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
 build = ["bash", "-c", "cd backened/shaktishield && python manage.py collectstatic --noinput"]

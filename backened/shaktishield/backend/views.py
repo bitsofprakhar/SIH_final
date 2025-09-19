@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 import os
 
 # Create your views here.
@@ -65,12 +68,13 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.utils.decorators import method_decorator
 
 @ensure_csrf_cookie
+@login_required
 def index_view(request):
     """Serve the government certificate verification portal"""
     from django.template.loader import render_to_string
     from django.template import Template, Context
     
-    # Create a professional government portal template
+    # Create a professional government portal selection template
     template_content = '''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,24 +179,30 @@ def index_view(request):
             opacity: 0.9;
         }
 
-        .upload-section {
+        .portals-section {
             padding: 40px;
         }
 
-        .upload-area {
-            border: 3px dashed #c41e3a;
-            border-radius: 15px;
-            padding: 60px 40px;
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .portal-card {
             background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
-            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .upload-area::before {
+        .portal-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -203,51 +213,73 @@ def index_view(request):
             transition: left 0.5s;
         }
 
-        .upload-area:hover::before {
+        .portal-card:hover::before {
             left: 100%;
         }
 
-        .upload-area:hover {
-            background: linear-gradient(135deg, #fff5f5, #ffffff);
-            border-color: #ff6b35;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2);
+        .portal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.2);
+            border-color: #c41e3a;
         }
 
-        .upload-area.dragover {
-            background: linear-gradient(135deg, #fff0f0, #ffffff);
-            border-color: #ff6b35;
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
+        .portal-icon {
             font-size: 64px;
-            color: #c41e3a;
             margin-bottom: 20px;
-            display: block;
+            color: #c41e3a;
         }
 
-        .upload-text {
-            font-size: 1.4em;
+        .portal-card h4 {
+            font-size: 1.5em;
             color: #0f2027;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .upload-subtext {
-            color: #666;
-            font-size: 1em;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .file-requirements {
-            color: #888;
-            font-size: 0.9em;
-            font-style: italic;
+        .portal-card p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
 
-        .file-input {
-            display: none;
+        .portal-btn {
+            background: linear-gradient(135deg, #c41e3a, #ff6b35);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .portal-card:hover .portal-btn {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.4);
+        }
+
+        .logout-section {
+            text-align: center;
+            border-top: 2px solid #e9ecef;
+            padding-top: 30px;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+            text-decoration: none;
+            color: white;
         }
 
         .verify-btn {
@@ -383,12 +415,17 @@ def index_view(request):
                 border-radius: 15px;
             }
 
-            .upload-section {
+            .portals-section {
                 padding: 30px 20px;
             }
 
-            .upload-area {
-                padding: 40px 20px;
+            .portals-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .portal-card {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -407,33 +444,36 @@ def index_view(request):
 
     <div class="container">
         <div class="portal-header">
-            <h3>🔒 Official Certificate Verification</h3>
-            <p>Secure verification system for JAC certificates and marksheets</p>
+            <h3>🏛️ Certificate Verification Portals</h3>
+            <p>Select the appropriate portal for your verification needs</p>
         </div>
 
-        <div class="upload-section">
-            <div class="upload-area" id="uploadArea">
-                <span class="upload-icon">📋</span>
-                <div class="upload-text">Upload Certificate for Verification</div>
-                <div class="upload-subtext">Drop your certificate here or click to browse</div>
-                <div class="file-requirements">Supported formats: JPG, PNG, PDF • Maximum size: 10MB</div>
+        <div class="portals-section">
+            <div class="portals-grid">
+                <div class="portal-card" onclick="location.href='{% url 'single_verification' %}'">
+                    <div class="portal-icon">📄</div>
+                    <h4>Single Verification</h4>
+                    <p>Verify individual certificates one at a time</p>
+                    <div class="portal-btn">Enter Portal</div>
+                </div>
+                
+                <div class="portal-card" onclick="location.href='{% url 'batch_verification' %}'">
+                    <div class="portal-icon">📑</div>
+                    <h4>Batch Verification</h4>
+                    <p>Verify multiple certificates simultaneously</p>
+                    <div class="portal-btn">Enter Portal</div>
+                </div>
+                
+                <div class="portal-card" onclick="location.href='{% url 'training_verification' %}'">
+                    <div class="portal-icon">🎓</div>
+                    <h4>Training Verification</h4>
+                    <p>Training portal for certificate verification</p>
+                    <div class="portal-btn">Enter Portal</div>
+                </div>
             </div>
-            <input type="file" id="certificateFile" class="file-input" accept="image/*,application/pdf" />
-            <img id="filePreview" class="file-preview" style="display: none;" />
             
-            <button class="verify-btn" id="verifyBtn" style="display: none;" onclick="verifyCertificate()">
-                🔍 Verify Certificate
-            </button>
-
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Verifying certificate against government database...</p>
-            </div>
-
-            <div class="result-section" id="resultSection">
-                <span class="result-icon" id="resultIcon"></span>
-                <div class="result-title" id="resultTitle"></div>
-                <div class="result-message" id="resultMessage"></div>
+            <div class="logout-section">
+                <a href="{% url 'logout' %}" class="logout-btn">🚪 Logout</a>
             </div>
         </div>
     </div>
@@ -443,159 +483,39 @@ def index_view(request):
     </div>
 
     <script>
-        const uploadArea = document.getElementById('uploadArea');
-        const fileInput = document.getElementById('certificateFile');
-        const verifyBtn = document.getElementById('verifyBtn');
-        const filePreview = document.getElementById('filePreview');
-        const loading = document.getElementById('loading');
-        const resultSection = document.getElementById('resultSection');
-
-        // Upload area click handler
-        uploadArea.addEventListener('click', () => fileInput.click());
-
-        // Drag and drop handlers
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('dragover');
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragover');
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleFileSelect(files[0]);
-            }
-        });
-
-        // File input change handler
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleFileSelect(e.target.files[0]);
-            }
-        });
-
-        function handleFileSelect(file) {
-            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
-            const maxSize = 10 * 1024 * 1024; // 10MB
-
-            if (!validTypes.includes(file.type)) {
-                alert('Please select a valid file type (JPG, PNG, PDF)');
-                return;
-            }
-
-            if (file.size > maxSize) {
-                alert('File size must be less than 10MB');
-                return;
-            }
-
-            // Show file preview for images
-            if (file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    filePreview.src = e.target.result;
-                    filePreview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                filePreview.style.display = 'none';
-            }
-
-            // Update upload area
-            uploadArea.innerHTML = `
-                <span class="upload-icon">✅</span>
-                <div class="upload-text">File Selected: ${file.name}</div>
-                <div class="upload-subtext">Ready for verification</div>
-            `;
-
-            verifyBtn.style.display = 'block';
-            resultSection.style.display = 'none';
+        // Simple portal navigation functionality
+        function navigateToPortal(url) {
+            window.location.href = url;
         }
-
-        function verifyCertificate() {
-            const file = fileInput.files[0];
-            if (!file) {
-                alert('Please select a certificate file first');
-                return;
-            }
-
-            // Show loading
-            loading.style.display = 'block';
-            verifyBtn.style.display = 'none';
-            resultSection.style.display = 'none';
-
-            const formData = new FormData();
-            formData.append('file', file);
-
-            fetch('/upload/', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRFToken': getCookie('csrftoken')
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                loading.style.display = 'none';
-                showResult(data);
-            })
-            .catch(error => {
-                loading.style.display = 'none';
-                showResult({
-                    result: 'INVALID',
-                    message: 'Verification failed. Please try again.'
+        
+        // Add hover effects for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            const portalCards = document.querySelectorAll('.portal-card');
+            portalCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
                 });
-                console.error('Error:', error);
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
             });
-        }
-
-        function showResult(data) {
-            const resultIcon = document.getElementById('resultIcon');
-            const resultTitle = document.getElementById('resultTitle');
-            const resultMessage = document.getElementById('resultMessage');
-            
-            resultSection.style.display = 'block';
-
-            if (data.result === 'VALID' || data.result === 'Genuine') {
-                resultSection.className = 'result-section result-valid';
-                resultIcon.textContent = '✅';
-                resultTitle.textContent = 'CERTIFICATE VALID';
-                resultMessage.textContent = 'This certificate has been successfully verified against the government database and is authentic.';
-            } else {
-                resultSection.className = 'result-section result-invalid';
-                resultIcon.textContent = '❌';
-                resultTitle.textContent = 'CERTIFICATE INVALID';
-                resultMessage.textContent = 'This certificate could not be verified against the government database. It may be fake or tampered with.';
-            }
-
-            verifyBtn.style.display = 'block';
-        }
-
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
+        });
     </script>
 </body>
 </html>'''
     
-    return HttpResponse(template_content, content_type='text/html')
+    from django.template import Template, RequestContext
+    template = Template(template_content)
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication
 
 class CertificateUploadView(APIView):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
     def post(self, request, format=None):
         try:
             # Validate file size and type before processing
@@ -630,3 +550,819 @@ class CertificateUploadView(APIView):
             return Response({'error': 'Invalid file data'}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'error': 'Certificate verification failed'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Login and Authentication Views
+from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import user_passes_test
+
+@csrf_protect
+def login_view(request):
+    """Handle user login with proper CSRF protection"""
+    if request.user.is_authenticated:
+        return redirect('index')
+        
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Respect the next parameter for proper redirection
+            next_url = request.GET.get('next', '/')
+            return redirect(next_url)
+        else:
+            messages.error(request, 'Invalid username or password')
+    
+    # Create login template with proper context handling
+    login_template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - JAC Certificate Verification Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 30%, #2c5364 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, #c41e3a, #ff6b35);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .login-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .login-form {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0f2027;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #c41e3a;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #c41e3a, #ff6b35);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.4);
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+            }
+            
+            .login-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>🏛️ JAC Portal</h2>
+            <p>Certificate Verification System</p>
+        </div>
+        
+        <div class="login-form">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">🔐 Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>'''
+    
+    from django.template import Template, RequestContext
+    template = Template(login_template)
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
+
+def logout_view(request):
+    """Handle user logout"""
+    logout(request)
+    return redirect('login')
+
+
+# Portal Views
+@login_required
+def single_verification_view(request):
+    """Single certificate verification portal"""
+    template_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Verification Portal - JAC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 30%, #2c5364 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #c41e3a;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .govt-emblem {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #c41e3a, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .header-text h1 {
+            color: #0f2027;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        .nav-links a {
+            margin-left: 20px;
+            color: #c41e3a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        .portal-header {
+            background: linear-gradient(135deg, #c41e3a, #ff6b35);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .upload-section {
+            padding: 40px;
+        }
+        
+        .upload-area {
+            border: 3px dashed #c41e3a;
+            border-radius: 15px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .upload-area:hover {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2);
+        }
+        
+        .upload-icon {
+            font-size: 64px;
+            color: #c41e3a;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .verify-btn {
+            background: linear-gradient(135deg, #c41e3a, #ff6b35);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="govt-emblem">JAC</div>
+                <div class="header-text">
+                    <h1>Single Certificate Verification</h1>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="/">← Back to Portals</a>
+                <a href="/logout/">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="portal-header">
+            <h3>📄 Single Certificate Verification</h3>
+            <p>Upload and verify individual certificates</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area" onclick="document.getElementById('certificateFile').click()">
+                <span class="upload-icon">📋</span>
+                <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 10px;">Upload Certificate for Verification</div>
+                <div style="color: #666; margin-bottom: 15px;">Click to browse or drag and drop</div>
+                <div style="color: #888; font-size: 0.9em;">Supported formats: JPG, PNG, PDF • Max: 10MB</div>
+            </div>
+            <input type="file" id="certificateFile" style="display: none;" accept="image/*,application/pdf" />
+            
+            <form id="verificationForm" method="post" action="{% url 'upload' %}" enctype="multipart/form-data" style="display: none;">
+                {% csrf_token %}
+                <input type="file" name="file" id="hiddenFileInput" accept="image/*,application/pdf" />
+            </form>
+            
+            <button class="verify-btn" onclick="verifyCertificate()">🔍 Verify Certificate</button>
+            
+            <div class="loading" id="loading" style="display: none; text-align: center; margin-top: 20px;">
+                <div style="border: 4px solid #f3f3f3; border-top: 4px solid #c41e3a; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+                <p>Verifying certificate...</p>
+            </div>
+            
+            <div id="result" style="display: none; margin-top: 20px; padding: 20px; border-radius: 10px; text-align: center;"></div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script>
+        function verifyCertificate() {
+            const fileInput = document.getElementById('certificateFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select a certificate file first');
+                return;
+            }
+            
+            // Validate file
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+            if (!validTypes.includes(file.type)) {
+                alert('Please select a valid file type (JPG, PNG, PDF)');
+                return;
+            }
+            
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size must be less than 10MB');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+            
+            // Create form data
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            // Get CSRF token
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            
+            fetch('/upload/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+                showResult(data);
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                showResult({
+                    result: 'INVALID',
+                    message: 'Verification failed. Please try again.'
+                });
+            });
+        }
+        
+        function showResult(data) {
+            const resultDiv = document.getElementById('result');
+            
+            if (data.result === 'VALID') {
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.border = '2px solid #28a745';
+                resultDiv.style.color = '#155724';
+                resultDiv.innerHTML = '<h3>✅ CERTIFICATE VALID</h3><p>This certificate has been successfully verified.</p>';
+            } else {
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.border = '2px solid #dc3545';
+                resultDiv.style.color = '#721c24';
+                resultDiv.innerHTML = '<h3>❌ CERTIFICATE INVALID</h3><p>This certificate could not be verified.</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+        
+        // Handle file input change
+        document.getElementById('certificateFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const uploadArea = document.querySelector('.upload-area');
+                uploadArea.innerHTML = `
+                    <span class="upload-icon">✅</span>
+                    <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 10px;">File Selected: ${file.name}</div>
+                    <div style="color: #666; margin-bottom: 15px;">Ready for verification</div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>'''
+    from django.template import Template, RequestContext
+    template = Template(template_content)
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
+
+@login_required
+def batch_verification_view(request):
+    """Batch certificate verification portal"""
+    template_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Verification Portal - JAC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 30%, #2c5364 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #c41e3a;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .govt-emblem {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #c41e3a, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .header-text h1 {
+            color: #0f2027;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        .nav-links a {
+            margin-left: 20px;
+            color: #c41e3a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        .portal-header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .upload-section {
+            padding: 40px;
+        }
+        
+        .upload-area {
+            border: 3px dashed #28a745;
+            border-radius: 15px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .upload-area:hover {
+            background: linear-gradient(135deg, #f0fff4, #ffffff);
+            border-color: #20c997;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.2);
+        }
+        
+        .upload-icon {
+            font-size: 64px;
+            color: #28a745;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .verify-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="govt-emblem">JAC</div>
+                <div class="header-text">
+                    <h1>Batch Certificate Verification</h1>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="/">← Back to Portals</a>
+                <a href="/logout/">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="portal-header">
+            <h3>📑 Batch Certificate Verification</h3>
+            <p>Upload and verify multiple certificates at once</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area" onclick="document.getElementById('batchFiles').click()">
+                <span class="upload-icon">📁</span>
+                <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 10px;">Upload Multiple Certificates</div>
+                <div style="color: #666; margin-bottom: 15px;">Select multiple files for batch processing</div>
+                <div style="color: #888; font-size: 0.9em;">Supported formats: JPG, PNG, PDF • Max: 10MB each</div>
+            </div>
+            <input type="file" id="batchFiles" style="display: none;" multiple accept="image/*,application/pdf" />
+            
+            <button class="verify-btn" onclick="verifyBatch()">🔍 Verify All Certificates</button>
+        </div>
+    </div>
+
+    <script>
+        function verifyBatch() {
+            alert('Batch certificate verification functionality will be implemented here.');
+        }
+    </script>
+</body>
+</html>'''
+    from django.template import Template, RequestContext
+    template = Template(template_content)
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
+
+@login_required
+def training_verification_view(request):
+    """Training certificate verification portal"""
+    template_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Verification Portal - JAC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 30%, #2c5364 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #c41e3a;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .govt-emblem {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #c41e3a, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .header-text h1 {
+            color: #0f2027;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        .nav-links a {
+            margin-left: 20px;
+            color: #c41e3a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        .portal-header {
+            background: linear-gradient(135deg, #6f42c1, #e83e8c);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .training-section {
+            padding: 40px;
+        }
+        
+        .training-card {
+            border: 2px solid #6f42c1;
+            border-radius: 15px;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .training-icon {
+            font-size: 64px;
+            color: #6f42c1;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .training-btn {
+            background: linear-gradient(135deg, #6f42c1, #e83e8c);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="govt-emblem">JAC</div>
+                <div class="header-text">
+                    <h1>Training Certificate Verification</h1>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="/">← Back to Portals</a>
+                <a href="/logout/">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="portal-header">
+            <h3>🎓 Training Certificate Verification</h3>
+            <p>Training portal for learning certificate verification process</p>
+        </div>
+
+        <div class="training-section">
+            <div class="training-card">
+                <span class="training-icon">🎯</span>
+                <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 15px;">Training Module</div>
+                <div style="color: #666; margin-bottom: 20px;">Learn how to effectively verify certificates using our training samples</div>
+                
+                <button class="training-btn" onclick="startTraining()">🚀 Start Training Session</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startTraining() {
+            alert('Training certificate verification functionality will be implemented here.');
+        }
+    </script>
+</body>
+</html>'''
+    from django.template import Template, RequestContext
+    template = Template(template_content)
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))

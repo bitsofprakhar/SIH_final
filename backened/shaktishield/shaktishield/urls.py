@@ -16,14 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from backend.views import CertificateUploadView, index_view
+from backend.views import (
+    CertificateUploadView, 
+    index_view, 
+    login_view, 
+    logout_view,
+    single_verification_view,
+    batch_verification_view,
+    training_verification_view
+)
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
     path('', index_view, name='index'),
     path('admin/', admin.site.urls),
     path('upload/', CertificateUploadView.as_view(), name='upload'),
+    path('single-verification/', single_verification_view, name='single_verification'),
+    path('batch-verification/', batch_verification_view, name='batch_verification'),
+    path('training-verification/', training_verification_view, name='training_verification'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

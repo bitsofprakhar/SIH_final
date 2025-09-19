@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from backend.views import CertificateUploadView
+from backend.views import CertificateUploadView, index_view
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', index_view, name='index'),
     path('admin/', admin.site.urls),
     path('upload/', CertificateUploadView.as_view(), name='upload'),
 ]
